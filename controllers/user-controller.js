@@ -3,19 +3,19 @@ const { User } = require("../models");
 const userController = {
   // get all users
   getAllUsers(req, res) {
-    User.find({})
+    User.find({}) // returning undefined
       .then((response) => res.json(response))
-      .catch((err) => res.status(404).json({ message: "No users found" }));
+      .catch((err) => res.status(404).json({ message: err.message }));
   },
 
   getUserById({ params }, res) {
-    User.finOne({ _id: params.id })
+    User.findOne({ _id: params.id })
       .then((response) => res.json(response))
       .catch((err) => res.status(404).json({ message: "User not found" }));
   },
 
   // create user
-  CreateUser({ body }, res) {
+  createUser({ body }, res) {
     User.create(body)
       .then((response) => res.json(response))
       .catch((err) => res.status(500).json({ message: err.message }));

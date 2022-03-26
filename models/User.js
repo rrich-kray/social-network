@@ -1,4 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
+const formatDate = require("../utils/formatDate");
 
 const UserSchema = new Schema(
   {
@@ -12,7 +13,7 @@ const UserSchema = new Schema(
       type: String,
       required: "Please enter an email address!",
       unique: true,
-      match: "/.+@.+..+/",
+      match: '/.+\@.+\..+/',
     },
     thoughts: [
       {
@@ -23,7 +24,7 @@ const UserSchema = new Schema(
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: this,
       },
     ],
   },

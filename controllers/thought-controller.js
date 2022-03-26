@@ -2,7 +2,7 @@ const { Thought } = require("../models");
 
 const thoughtController = {
   // Get all thoughts
-  getAllthoughts(req, res) {
+  getAllThoughts(req, res) {
     Thought.find({})
       .populate({
         path: "Reactions",
@@ -119,3 +119,5 @@ const thoughtController = {
       .catch((err) => res.status(500).json({ message: err.message }));
   },
 };
+
+module.exports = thoughtController;
