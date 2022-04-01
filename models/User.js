@@ -1,19 +1,21 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model } = require("mongoose");
 const formatDate = require("../utils/formatDate");
+const Thought = require("./Thought");
 
 const UserSchema = new Schema(
   {
     username: {
       type: String,
       unique: true,
-      required: "Please provide a username!",
       trim: true,
+      required: [true, "Please provide a username!"],
+      maxLength: [50, "Please shorten your username"],
     },
     email: {
       type: String,
-      required: "Please enter an email address!",
+      required: [true, "Please enter an email address!"],
       unique: true,
-      match: '/.+\@.+\..+/',
+      // match: "/^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/",
     },
     thoughts: [
       {

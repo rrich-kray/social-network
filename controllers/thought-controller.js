@@ -1,14 +1,14 @@
-const { Thought } = require("../models");
+const { Thought, User } = require("../models");
 
 const thoughtController = {
   // Get all thoughts
   getAllThoughts(req, res) {
     Thought.find({})
       .populate({
-        path: "Reactions",
+        path: "reactions",
         select: "__v",
       })
-      .select("__v")
+      // .select("__v")
       .then((response) => {
         if (!response) res.json({ message: "No Thoughts found!" });
         res.json(response);
@@ -18,7 +18,7 @@ const thoughtController = {
 
   // Get single thought
   getThoughtById({ params }, res) {
-    Thought.findOne({ _id: params.id })
+    Thought.findOne({ _id: params.id }) // by default, Mongoose adds an _id property to your schemas
       .populate({
         path: "Reactions",
         select: "__v",
@@ -38,17 +38,23 @@ const thoughtController = {
 
   // Create thought
   createThought({ params, body }, res) {
+    console.log(params);
     Thought.create(body)
+      .then(({ _id }) => {
+        return User.findOneAndUpdate(
+          { _id: params.UserId }, // params.userId is undefined - params object looks to be undefined. Can't find user. Should Thought model virtual that generates userId matching the username provided? or getter method?
+          { $push: { thoughts: _id } }, // Thought is created but these aren't being pushed
+          { new: true }
+        );
+      })
       .then((response) => {
         if (!response) {
-          res.json({ message: "Could not create thought" });
+          res.status(500).json({ message: "Something went wrong." });
           return;
         }
         res.json(response);
       })
-      .catch((err) => {
-        res.status(500).json({ message: err.message });
-      });
+      .catch((err) => res.json(err.message));
   },
 
   addReaction({ params, body }, res) {
@@ -74,7 +80,7 @@ const thoughtController = {
     Thought.findOneAndDelete(
       { _id: params.id },
       { $pull: { reactions: { reactionId: params.reactionId } } },
-      { new: true, runValidators: true }
+      { new: true }
     )
       .then((response) => {
         if (!response) {
@@ -112,11 +118,19 @@ const thoughtController = {
       .then((response) => {
         if (!response) {
           res.json({ message: "Could not delete thought" });
-          return;
         }
-        res.json(response);
+        return User.findOneAndUpdate(
+          { _id: params.id },
+          { $pull: { thought: params.thoughtId } },
+          { new: true }
+        );
       })
-      .catch((err) => res.status(500).json({ message: err.message }));
+      .then((response) => {
+        if (!response) {
+          res.status(404), json({ message: "Thought not found." });
+        }
+      })
+      .catch((err) => res.json(err));
   },
 };
 

@@ -8,6 +8,7 @@ const userController = {
       .catch((err) => res.status(404).json({ message: err.message }));
   },
 
+  // get single user
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .then((response) => res.json(response))
