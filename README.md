@@ -4,7 +4,7 @@
 
 [Description](#description)  
 [Installation](#installation)  
-[How it works](#how-it-works)
+[How it works](#how-it-works)  
 [Usage](#usage)  
 [Utilizes](#utilizes)  
 [Credits](#credits)  
@@ -56,27 +56,17 @@ With that in mind, three table models constitute the backbone of the application
   - username: String type, references the User model.
   - createdAt: Date type, formatted upon retrieval using getter that utilizes helper function.
 
-Controller files provide most of
+Controller files provide most of the functionality for the routes. The controllers use Mongoose's built in model methods to query and modify the database.
 
 ## Usage
 
-The application is currently not integrated with a front end, so functionality must be tested using an API client like Insomnia (used for this demonstration).
+The application is currently not integrated with a front end, so functionality must be tested using an API client like Insomnia (used for this demonstration). To illustrate, the following two images display queries to retrieve all users and all thoughts from the database;
 
-![main screenshot](./public/images/single-post.png)
+![main screenshot](./public/images/screen1.png)
 
-![post-comment screenshot](./public/images/post-comment.png)
+![post-comment screenshot](./public/images/screen2.png)
 
-![navbar screenshot](./public/images/navbar.png)
-
-![login screenshot](./public/images/login.png)
-
-![signup screenshot](./public/images/signup.png)
-
-![navbar-loggedIn screenshot](./public/images/navbar-loggedIn.png)
-
-![add-post screenshot](./public/images/add-post.png)
-
-![dashbboard screenshot](./public/images/dashboard.png)
+Additionally, a demonstration video can be found in the link below:
 
 ## Utilizes
 
