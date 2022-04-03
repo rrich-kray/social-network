@@ -17,9 +17,10 @@
 
 Social Network serves as the backend for a fictional social networking website. This was my first project using an ODM database structure (MongoDB), and I used the Mongoose library as the interface between that and the express API. In its current build, the project has the following features:
 
-- Query, create and delete users
+- Query, create, update and delete users
 - Query, create, update and delete thoughts (i.e., user comments)
-- Query, create and delete reactions (i.e, comment replies)
+- Create and delete reactions (i.e, comment replies)
+- Add and remove user friends
 
 ## Installation
 
@@ -31,9 +32,9 @@ The application utilizes the Mongoose JavaScript library as an intermediary for 
 
 https://mongoosejs.com/docs/api.html
 
-With that in mind, three table models constitute the backbone of the application;
+With that in mind, three models constitute the backbone of the application;
 
-- The user model, which instantiates instances of users in the social network. It is based on a schema with the following fields:
+- The User model, which instantiates instances of users in the social network. It is based on a schema with the following fields:
 
   - username: String type, required; must be unique and under 50 characters in length; trimmed.
   - email: String type, required; must be unique and constitute a valid email address.
@@ -56,17 +57,19 @@ With that in mind, three table models constitute the backbone of the application
   - username: String type, references the User model.
   - createdAt: Date type, formatted upon retrieval using getter that utilizes helper function.
 
-Controller files provide most of the functionality for the routes. The controllers use Mongoose's built in model methods to query and modify the database.
+Controller files provide the functionality for the routes. The controllers use Mongoose's native methods to query and modify database documents.
 
 ## Usage
 
 The application is currently not integrated with a front end, so functionality must be tested using an API client like Insomnia (used for this demonstration). To illustrate, the following two images display queries to retrieve all users and all thoughts from the database;
 
-![main screenshot](./public/images/screen1.png)
+![Query all users screenshot](./public/images/screen1.png)
 
-![post-comment screenshot](./public/images/screen2.png)
+![Query all thoughts screenshot](./public/images/screen2.png)
 
 Additionally, a demonstration video can be found in the link below:
+
+https://drive.google.com/file/d/1_i5ghvc22cHvSNMPgAjykX__zPVmDHEi/view
 
 ## Utilizes
 

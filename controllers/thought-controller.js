@@ -38,12 +38,11 @@ const thoughtController = {
 
   // Create thought
   createThought({ params, body }, res) {
-    console.log(params);
     Thought.create(body)
       .then(({ _id }) => {
         return User.findOneAndUpdate(
-          { _id: params.UserId }, // params.userId is undefined - params object looks to be undefined. Can't find user. Should Thought model virtual that generates userId matching the username provided? or getter method?
-          { $push: { thoughts: _id } }, // Thought is created but these aren't being pushed
+          { _id: params.userId },
+          { $push: { thoughts: _id } },
           { new: true }
         );
       })
@@ -77,7 +76,7 @@ const thoughtController = {
 
   // Remove reply
   removeReaction({ params, body }, res) {
-    Thought.findOneAndDelete(
+    Thought.findOneAndUpdate(
       { _id: params.id },
       { $pull: { reactions: { reactionId: params.reactionId } } },
       { new: true }

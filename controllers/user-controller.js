@@ -26,7 +26,6 @@ const userController = {
   updateUser({ params, body }, res) {
     User.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
-      runValidators: true,
     })
       .then((response) => res.json(response))
       .catch((err) => res.status(500).json({ message: err.message }));
@@ -37,6 +36,28 @@ const userController = {
     User.findOneAndDelete({ _id: params.id })
       .then((response) => res.json(response))
       .catch((err) => res.status(500).json({ message: err }));
+  },
+
+  addFriend({ params }, res) {
+    User.findOne({ _id: params.friendId }).then(({ _id }) => {
+      User.findOneAndUpdate(
+        { _id: params.id },
+        { $push: { friends: _id } },
+        { new: true }
+      )
+        .then((response) => res.json(response))
+        .catch((err) => res.staus(500).json({ message: err.message }));
+    });
+  },
+
+  removeFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.id },
+      { $pull: { friends: params.friendId } },
+      { new: true }
+    )
+      .then((response) => res.json(response))
+      .catch((err) => res.status(500).json({ message: err.message }));
   },
 };
 

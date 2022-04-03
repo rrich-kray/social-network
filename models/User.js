@@ -15,7 +15,10 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "Please enter an email address!"],
       unique: true,
-      // match: "/^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/",
+      match: [
+        /^([a-z0-9_\.-]+)@([da-z\.-]+).([a-z\.]{2,6})$/,
+        "Please provide a valid email address",
+      ],
     },
     thoughts: [
       {
@@ -23,7 +26,12 @@ const UserSchema = new Schema(
         ref: "Thought",
       },
     ],
-    friends: [this], // returning undefined
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ], // returning undefined
   },
   {
     toJSON: {
@@ -34,7 +42,7 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.virtual("friendCount").get(() => {
+UserSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
 

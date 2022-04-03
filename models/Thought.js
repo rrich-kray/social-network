@@ -59,7 +59,7 @@ const ThoughtSchema = new Schema(
   }
 );
 
-ThoughtSchema.virtual("reactionCount").get(() => {
+ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
@@ -68,3 +68,10 @@ module.exports = Thought;
 
 // In sequelize, you had to store a reference to the parent data's id with the child's data.
 // in Mongoose, you can instruct the parent to keep track of the children
+
+// have user and order history on ecom site
+// array of orders will be inside of the users
+// In mongo, you can't include params of other table, you have to get info and perform search in user database
+// Mongo gets you running faster.
+// Can do mongo for long term, but mongo is very expensive for smaller companies.
+// __v default in Mongo, version control. Display version for Mongo. Whether you put it in or not, it will still assume you mean __v
