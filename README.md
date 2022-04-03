@@ -81,10 +81,6 @@ https://drive.google.com/file/d/1_i5ghvc22cHvSNMPgAjykX__zPVmDHEi/view
 
 ## Questions
 
-Feel free to shoot me any questions at the email below:
-
-rrich.kray.93@gmail.com
-
 find my GitHub profile by following the link below:
 
 https://github.com/rrich-kray/
