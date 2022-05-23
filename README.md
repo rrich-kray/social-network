@@ -1,5 +1,7 @@
 # Social Network
 
+This serves as the repository for the Social Network project.
+
 ## Table of Contents
 
 [Description](#description)  
@@ -8,25 +10,27 @@
 [Usage](#usage)  
 [Utilizes](#utilizes)  
 [Credits](#credits)  
-[Questions](#questions)  
+[Contact](#contact)  
 [License](#license)
 
 ## Description
 
 ![main screenshot](./public/images/screen1.png)
 
-Social Network serves as the backend for a fictional social networking website. This was my first project using an ODM database structure (MongoDB), and I used the Mongoose library as the interface between that and the express API. In its current build, the project has the following features:
+Social Network serves as the backend for a fictional social networking website. This project served as an introduction to MongoDB and, more generally, non-relational database paradigms, as well as the ODM Mongoose.
+
+## Installation
+
+This application requires Node.js to operate. Download the Node.js
+
+## How it works
+
+In its current build, the project has the following features:
 
 - Query, create, update and delete users
 - Query, create, update and delete thoughts (i.e., user comments)
 - Create and delete reactions (i.e, comment replies)
 - Add and remove user friends
-
-## Installation
-
-This application requires Node and Express.
-
-## How it works
 
 The application utilizes the Mongoose JavaScript library as an intermediary for the Express.js server and the MongoDB database. You can find more information on Mongoose here:
 
@@ -79,11 +83,13 @@ https://drive.google.com/file/d/1_i5ghvc22cHvSNMPgAjykX__zPVmDHEi/view
 - MongoDB
 - Mongoose
 
-## Questions
+## Contact
 
-find my GitHub profile by following the link below:
+Email: rrich.kray.93@gmail.com
 
-https://github.com/rrich-kray/
+GitHub: https://github.com/rrich-kray/
+
+Portfolio: https://react-portfolio-v1-rrich-kray.herokuapp.com/
 
 ## License
 
