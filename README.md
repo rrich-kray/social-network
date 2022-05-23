@@ -9,7 +9,6 @@ This serves as the repository for the Social Network project.
 [How it works](#how-it-works)  
 [Usage](#usage)  
 [Utilizes](#utilizes)  
-[Credits](#credits)  
 [Contact](#contact)  
 [License](#license)
 
@@ -17,24 +16,26 @@ This serves as the repository for the Social Network project.
 
 ![main screenshot](./public/images/screen1.png)
 
-Social Network serves as the backend for a fictional social networking website. This project served as an introduction to MongoDB and, more generally, non-relational database paradigms, as well as the ODM Mongoose.
+Social Network serves as the backend for a fictional social networking website. This project served as an introduction to MongoDB and, more generally, non-relational database paradigms, as well as the ODM Mongoose. In future builds, I intend to integrate this application with a frontend and deploy it.
 
 ## Installation
 
-This application requires Node.js to operate. Download the Node.js
+This application requires Node.js to operate. Download the Node.js pre-built installer or source code here:
+
+https://nodejs.org/en/download/
 
 ## How it works
 
-In its current build, the project has the following features:
+The application uses a MongoDB database and the Mongoose ODM to define the database's schema.
+
+In its current build, the project allows users to:
 
 - Query, create, update and delete users
 - Query, create, update and delete thoughts (i.e., user comments)
 - Create and delete reactions (i.e, comment replies)
 - Add and remove user friends
 
-The application utilizes the Mongoose JavaScript library as an intermediary for the Express.js server and the MongoDB database. You can find more information on Mongoose here:
-
-https://mongoosejs.com/docs/api.html
+The application utilizes the Mongoose ODM as an intermediary for the Express.js server and the MongoDB database.
 
 With that in mind, three models constitute the backbone of the application;
 
@@ -65,23 +66,17 @@ Controller files provide the functionality for the routes. The controllers use M
 
 ## Usage
 
-The application is currently not integrated with a front end, so functionality must be tested using an API client like Insomnia (used for this demonstration). To illustrate, the following two images display queries to retrieve all users and all thoughts from the database;
-
-![Query all users screenshot](./public/images/screen1.png)
-
-![Query all thoughts screenshot](./public/images/screen2.png)
-
-Additionally, a demonstration video can be found in the link below:
+A demonstration video can be found in the link below:
 
 https://drive.google.com/file/d/1_i5ghvc22cHvSNMPgAjykX__zPVmDHEi/view
 
 ## Utilizes
 
-- JavaScript
 - Node.js
-- Express
+- Express.js
 - MongoDB
-- Mongoose
+- Mongoose ODM
+- JavaScript
 
 ## Contact
 
